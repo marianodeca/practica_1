@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora</title>
+<meta charset="utf-8">
+
+  <style type="text/css">
+    
+
+    .container{
+      width: 50%;
+      height: auto;
+      margin: auto;
+      background-color: lightgray;
+    }
+    
+    label{
+      font-size: 1.2em;
+    }
+
+    input{
+      width: 60%;
+      margin-left: 20%;
+      height: 1.5em;
+      font-size: 1.2em;
+      padding: 0.5em;
+      background-color: darkblue;
+      color:white;
+      text-align: right;
+      margin-right: 0.5em;
+    }
+    
+    .container .unit, .bin, .igual {
+
+      width: 60%;
+      margin-left: 22%;
+    
+    }
+
+    .container .unit button, .bin button {
+      width: 40%;
+      margin-left: 3%;
+      margin-top: 2%;
+      font-size: 1.5em;
+      border-radius: 2em;
+      border: 1px solid black;
+     
+
+    } 
+    .bin button{
+      background-color: blue;
+      color:yellow;
+    }
+    
+    .unit button {
+      background-color: red;
+      color:white;
+    }
+
+
+    .igual{
+        
+        background-color: green !important;
+        color: white !important;  
+    }
+    
+    
+
+    
+  </style>
+
+<script type="text/javascript">
+  
+  var num, acc = 0, op = "";
+
+  function mas()   { acc = num.value;  op = "+"; }
+  function menos() { acc = num.value;  op = "-"; }
+  function multiplica() { acc = num.value;  op = "*"; }
+  function divide() { acc = num.value;  op = "/"; }
+  function exponente_y() { acc = num.value;  op = "^y"; }
+
+  function cuadrado() {num.value = num.value * num.value; }
+  function inverso() {num.value = 1/num.value;}
+  function raiz() { num.value = Math.sqrt(num.value);}
+  function entero(){
+        if (num.value>0){
+          num.value = Math.floor(num.value); 
+        }else{
+          num.value = -Math.ceil(num.value);
+        }
+  }
+  
+  function calcular() {
+    if (op === "+") {num.value = (+acc + +num.value)}
+    if (op === "-") {num.value = (+acc - +num.value)}
+    if (op === "*") {num.value = (+acc * +num.value)}  
+    if (op === "/") {num.value = (+acc / +num.value)}  
+    if (op === "^y") {num.value = (Math.pow(+acc, +num.value))}    
+  }
+
+  function inic ()   {num = document.getElementById("num");}
+  function vaciar () {num.value = "";}  
+</script>
+</head>
+<body onLoad="inic()">
+
+  
+
+
+    <div class="container">
+          <h2>Buenos dias</h2>
+          <h3>Bienvenidos a la calculadora de Mariano Decastelli</h3>
+
+          <label for="num">Numero:</label><br>
+          <input type="text" size="15" id="num" onClick="vaciar()"><p>
+      
+      <div class="unit">    
+          <button onclick="cuadrado()">x<sup>2</sup></button>
+          <button onclick="raiz()"> v<sup>--</sup> </button>
+          <button onclick="inverso()"> 1/x </button> 
+          <button onclick="entero()">Z</button>
+      </div>
+
+      <div class="bin">  
+          <button class="oper" onClick="mas()">+</button>
+          <button class="oper" onClick="menos()">-</button>
+          <button class="oper" onClick="multiplica()">*</button>
+          <button class="oper" onClick="divide()">/</button>
+          <button class="oper" onClick="exponente_y()">x^y</button>
+          <button class="igual"  onClick="calcular()">=</button>
+       </div>  
+
+       <div >  
+         
+          </p>
+       </div> 
+
+    </div>
+
+</body>
+</html>
